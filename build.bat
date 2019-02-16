@@ -123,7 +123,7 @@ cmd /c adb -s %ADB_DEVICE% shell am start -n %PROJECT_PACKAGE%/.MainActivity
 call :sep
 echo program output
 call :sep
-cmd /c adb logcat MyActivity:D *:W stdout:I stderr:I
+cmd /c adb logcat MyActivity:D *:S
 
 :: adb forward tcp:40000 localabstract:com.randommain.fastpaste-inspectorServer
 :: adb forward tcp:40001 localabstract:chrome_devtools_remote

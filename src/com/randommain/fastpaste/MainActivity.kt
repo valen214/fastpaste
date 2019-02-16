@@ -70,7 +70,7 @@ class MainActivity: Activity(){
                     copyToClipboard()
                     println("copied to clipboard")
                     Log.i(TAG, "now paste")
-                    pasteToServer()
+                    pastePlainText()
                 } catch(e: Exception){
                     e.printStackTrace()
                 }
@@ -88,7 +88,18 @@ class MainActivity: Activity(){
         clipboard.primaryClip = clip
     }
 
-    private fun pasteToServer(){
+    private fun pastePlainText() = with(clipboard){
+        if(!hasPrimaryClip()) return
+        if(primaryClipDescription?.hasMimeType("text/plain") == true){
+            var item = primaryClip!!.getItemAt(0)
+            item.text?.let{
+                print("text pasted from clipboard: ")
+                println(it)
+            }
+        }
+    }
+
+    private fun pasteContentUriToServer(){
         if(!clipboard.hasPrimaryClip()) return
 
         val cr = getContentResolver()
@@ -98,6 +109,7 @@ class MainActivity: Activity(){
         val pasteUri = clip?.run{
             getItemAt(0).uri
         }
+        println("getItemAt(0).uri: $pasteUri")
         pasteUri?.let{
             var uriMimeType = cr.getType(it)
             uriMimeType?.takeIf{
