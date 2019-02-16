@@ -32,7 +32,7 @@ if not "%~1"=="run" (
     echo build without executing
     echo.
 )
-echo generating R.java
+echo packing resources and generating R.java
 echo.
 
 :: https://chromium.googlesource.com/android_tools/+/d8a5bfea861dfbacd9a74275c00561f7bb27d6e3/sdk/tools/ant/build.xml
@@ -44,7 +44,14 @@ echo.
 
 cmd /c aapt2 compile %PROJ%\res\layout\activity_main.xml -o bin/
 cmd /c aapt2 compile %PROJ%\res\values\strings.xml -o bin/
-cmd /c aapt2 link -o %PROJ%\bin\app.unaligned.apk -I %ANDROID_JAR_PATH% --manifest %PROJ%\AndroidManifest.xml bin\layout_activity_main.xml.flat bin\values_strings.arsc.flat --java %PROJ%\src
+cmd /c aapt2 link ^
+        -o %PROJ%\bin\app.unaligned.apk ^
+        -I %ANDROID_JAR_PATH% ^
+        --manifest %PROJ%\AndroidManifest.xml ^
+        --java %PROJ%\src ^
+        %PROJ%\bin\layout_activity_main.xml.flat ^
+        %PROJ%\bin\values_strings.arsc.flat
+
 
 call :sep
 :: C:\Program Files\Android\Android Studio\gradle\m2repository\org\jetbrains\kotlin\kotlin-android-extensions\1.3.20
@@ -71,23 +78,19 @@ if %errorlevel% neq 0 (
     call :sep
     echo start packing
     echo.
-    cmd /c dx --dex --output="%PROJ%/bin/classes.dex" "%PROJ%/obj"
-    cmd /c aapt package -f -m ^
-            -F "%PROJ%/bin/app.unaligned.apk" ^
-            -M "%PROJ%/AndroidManifest.xml" ^
-            -S "%PROJ%/res" ^
-            -S "%PROJ%/lib" ^
-            -I "%ANDROID_JAR_PATH%"
-
-    echo copying 'classes.dex' to root
-    copy "%PROJ%/bin\classes.dex" .
+    cmd /c d8 ^
+            %PROJ%\obj\com\randommain\fastpaste\* ^
+            %PROJ%\lib\kotlin-stdlib.jar ^
+            --lib "%ANDROID_JAR_PATH%" ^
+            --output %PROJ%\bin
+::            --classpath "%PROJ%\lib\kotlin-reflect.jar" ^
 
     echo adding 'classes.dex' to apk
-    cmd /c aapt add "%PROJ%/bin/app.unaligned.apk" classes.dex
+    cmd /c aapt add "%PROJ%/bin/app.unaligned.apk" "%PROJ%\bin\classes.dex"
 
     echo.
 
-    echo signing apk
+    echo aligning and signing apk
     :: keytool -genkeypair -validity 365 -keystore key.keystore -keyalg RSA -keysize 2048
     cmd /c zipalign -f 4 "%PROJ%/bin/app.unaligned.apk" "%PROJ%/bin/app.apk"
 
