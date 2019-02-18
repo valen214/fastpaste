@@ -5,12 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <!--
+    https://developer.android.com/reference/android/view/View
+    https://stackoverflow.com/questions/52329249/
+why-doesnt-androidforeground-attribute-work
+    -->
     <TextView
         android:id="@+id/hello_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/hello_msg"
+        android:background="@color/white"
         tools:context=".MainActivity" />
     <Button
         android:id="@+id/activity_main_button1"
@@ -20,4 +26,10 @@
         android:layout_below="@id/hello_text"
         android:text="@string/activity_main_button1"
         tools:context=".MainActivity" />
+    <Button
+        android:id="@+id/activity_main_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_main_button1"
+        android:text="@string/activity_main_button1" />
 </RelativeLayout>

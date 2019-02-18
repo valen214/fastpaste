@@ -42,15 +42,19 @@ echo.
 ::         -S "%PROJ%/res" ^
 ::         -I "%ANDROID_JAR_PATH%"
 
-cmd /c aapt2 compile %PROJ%\res\layout\activity_main.xml -o bin/
-cmd /c aapt2 compile %PROJ%\res\values\strings.xml -o bin/
+cmd /c aapt2 compile %PROJ%\res\layout\activity_main.xml -o compiled\res\
+cmd /c aapt2 compile %PROJ%\res\values\strings.xml -o compiled\res\
+cmd /c aapt2 compile %PROJ%\res\values\colors.xml -o compiled\res\
 cmd /c aapt2 link ^
         -o %PROJ%\bin\app.unaligned.apk ^
         -I %ANDROID_JAR_PATH% ^
         --manifest %PROJ%\AndroidManifest.xml ^
         --java %PROJ%\src ^
-        %PROJ%\bin\layout_activity_main.xml.flat ^
-        %PROJ%\bin\values_strings.arsc.flat
+        %PROJ%\compiled\res\layout_activity_main.xml.flat ^
+        %PROJ%\compiled\res\values_strings.arsc.flat ^
+        %PROJ%\compiled\res\values_colors.arsc.flat ^
+
+
 
 
 call :sep
@@ -59,11 +63,11 @@ call :sep
 echo compiling...
 echo.
 if %USE_KOTLIN%==true (
-    cmd /c kotlinc -Werror -d obj -cp "src;%ANDROID_JAR_PATH%;lib" ^
+    cmd /c kotlinc -Werror -d compiled\src -cp "src;%ANDROID_JAR_PATH%;lib" ^
             src/com/randommain/fastpaste/*.kt ^
             src/com/randommain/fastpaste/*.java
 ) else (
-    javac -d obj -bootclasspath "%ANDROID_JAR_PATH%" ^
+    javac -d compiled\src -bootclasspath "%ANDROID_JAR_PATH%" ^
             src/com/randommain/fastpaste/*.java
 )
 
@@ -76,17 +80,18 @@ if %errorlevel% neq 0 (
 ) else (
     echo compiling finished
     call :sep
-    echo start packing
+    echo packing classes.dex
     echo.
     cmd /c d8 ^
-            %PROJ%\obj\com\randommain\fastpaste\* ^
+            %PROJ%\compiled\src\com\randommain\fastpaste\* ^
             %PROJ%\lib\kotlin-stdlib.jar ^
             --lib "%ANDROID_JAR_PATH%" ^
-            --output %PROJ%\bin
+            --output %PROJ%\compiled\classes
 ::            --classpath "%PROJ%\lib\kotlin-reflect.jar" ^
 
     echo adding 'classes.dex' to apk
-    cmd /c aapt add "%PROJ%/bin/app.unaligned.apk" "%PROJ%\bin\classes.dex"
+    cmd /c aapt add "%PROJ%\bin\app.unaligned.apk" ^
+            "%PROJ%\compiled\classes\classes.dex"
 
     echo.
 
@@ -96,7 +101,8 @@ if %errorlevel% neq 0 (
 
     set "password=TemporaryPassword"
     cmd /c apksigner sign --ks key.keystore ^
-            --ks-pass pass:%password% --key-pass pass:%password% ^
+            --ks-pass pass:%password% ^
+            --key-pass pass:%password% ^
             "%PROJ%/bin/app.apk"
 
     echo.

@@ -67,7 +67,7 @@ class MainActivity: Activity(){
             setOnClickListener{
                 try{
                     setText(R.string.pressed)
-                    copyToClipboard()
+                    copyPlainText()
                     println("copied to clipboard")
                     Log.i(TAG, "now paste")
                     pastePlainText()
@@ -76,14 +76,31 @@ class MainActivity: Activity(){
                 }
             }
         }
+        with(findViewById(R.id.activity_main_button2) as Button){
+            setOnClickListener{
+                try{
+                    setText(R.string.pressed)
+                    copyContentUri()
+                    println("copied content uri to clipboard")
+                    Log.i(TAG, "now paste")
+                    pasteContentUri()
+                } catch(e: Exception){
+                    e.printStackTrace()
+                }
+            }
+        }
 
         Log.i(TAG, "Hello from Log.i()")
         println("Hello from println()")
+        println("SDK Level: ${android.os.Build.VERSION.SDK_INT}")
+    }
+    public override fun onStop(){
+        super.onStop()
     }
 
 
     // https://developer.android.com/guide/topics/text/copy-paste
-    private fun copyToClipboard(){
+    private fun copyPlainText(){
         val clip: ClipData = ClipData.newPlainText("simple text", "Hello")
         clipboard.primaryClip = clip
     }
@@ -99,7 +116,12 @@ class MainActivity: Activity(){
         }
     }
 
-    private fun pasteContentUriToServer(){
+    private fun copyContentUri(){
+        clipboard.primaryClip = ClipData.newUri(getContentResolver(), "URI",
+                Uri.parse("content://com.randommain.fastpaste/paste1/Hello"
+        ))
+    }
+    private fun pasteContentUri(){
         if(!clipboard.hasPrimaryClip()) return
 
         val cr = getContentResolver()
