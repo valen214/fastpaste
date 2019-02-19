@@ -2,7 +2,9 @@ package com.randommain.fastpaste
 
 import android.app.Activity
 import android.content.ClipData
+import android.content.ClipDescription
 import android.content.ClipboardManager
+import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -51,8 +53,11 @@ class LoggerOutputStream: OutputStream(){
 
 
 class MainActivity: Activity(){
-    private val clipboard: ClipboardManager by lazy {
+    private val clipboard: ClipboardManager by lazy{
         getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    }
+    private val cr: ContentResolver by lazy{
+        getContentResolver()
     }
 
     override fun onCreate(savedInstanceState: Bundle?){
@@ -124,7 +129,6 @@ class MainActivity: Activity(){
     private fun pasteContentUri(){
         if(!clipboard.hasPrimaryClip()) return
 
-        val cr = getContentResolver()
         // val clipDescription = clipboard.getPrimaryClipDescription()
 
         val clip = clipboard.primaryClip
@@ -134,9 +138,9 @@ class MainActivity: Activity(){
         println("getItemAt(0).uri: $pasteUri")
         pasteUri?.let{
             var uriMimeType = cr.getType(it)
+            println("mime: $uriMimeType")
             uriMimeType?.takeIf{
-                println("mime: $uriMimeType")
-                it == "text/plain"
+                it == ClipDescription.MIMETYPE_TEXT_URILIST
             }?.apply{
                 cr.query(pasteUri, null, null, null, null)?.use{
                     if(it.moveToFirst()){

@@ -9,7 +9,7 @@ package com.randommain.fastpaste;
 
 public final class R {
   public static final class color {
-    public static final int purp=0x7f010000;
+    public static final int violet=0x7f010000;
     public static final int white=0x7f010001;
   }
   public static final class id {

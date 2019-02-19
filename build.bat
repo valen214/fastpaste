@@ -22,8 +22,6 @@ if "%USE_KOTLIN%"=="" (
 set "cwd=%cd%"
 
 set "PROJ=D:\GoogleDrive\sync\main-custom-project\code\android\fastpaste"
-set "ANDROID_JAR_PATH=%ANDROID_SDK_HOME%\platforms\android-28\android.jar"
-
 cd /D "%PROJ%"
 
 echo project root: %PROJ%
@@ -96,11 +94,11 @@ if %errorlevel% neq 0 (
     echo.
 
     echo aligning and signing apk
-    :: keytool -genkeypair -validity 365 -keystore key.keystore -keyalg RSA -keysize 2048
+    :: keytool -genkeypair -validity 365 -keystore bin\key.keystore -keyalg RSA -keysize 2048
     cmd /c zipalign -f 4 "%PROJ%/bin/app.unaligned.apk" "%PROJ%/bin/app.apk"
 
     set "password=TemporaryPassword"
-    cmd /c apksigner sign --ks key.keystore ^
+    cmd /c apksigner sign --ks bin\key.keystore ^
             --ks-pass pass:%password% ^
             --key-pass pass:%password% ^
             "%PROJ%/bin/app.apk"

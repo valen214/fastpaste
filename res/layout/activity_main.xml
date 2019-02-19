@@ -25,6 +25,7 @@ why-doesnt-androidforeground-attribute-work
         android:layout_centerHorizontal="true"
         android:layout_below="@id/hello_text"
         android:text="@string/activity_main_button1"
+        android:background="@color/violet"
         tools:context=".MainActivity" />
     <Button
         android:id="@+id/activity_main_button2"
