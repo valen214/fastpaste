@@ -1,5 +1,9 @@
-<?xml version='1.0'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--
+https://developer.android.com/guide/topics/resources/more-resources#Color
+-->
+    <color name="black">#f000</color>
+    <color name="violet">#faaf</color>
     <color name="white">#ffff</color>
-    <color name="violet">#ffaaaaff</color>
 </resources>

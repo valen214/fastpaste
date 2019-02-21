@@ -1,12 +1,9 @@
 package com.randommain.fastpaste
 
 import android.app.Activity
-import android.content.ClipData
-import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.ContentResolver
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.webkit.WebView
@@ -14,6 +11,9 @@ import android.widget.Button
 
 import java.io.OutputStream
 import java.io.PrintStream
+
+import com.randommain.fastpaste.*
+
 
 /*
 574587-20190212-6aafdc37
@@ -30,7 +30,8 @@ https://kotlinlang.org/docs/reference/idioms.html#consuming-a-nullable-boolean
 */
 private const val TAG = "MyActivity"
 
-class LoggerOutputStream: OutputStream(){
+
+private class LoggerOutputStream: OutputStream(){
     private var line_buffer: StringBuilder = StringBuilder()
 
     override fun write(b: Int){
@@ -62,7 +63,7 @@ class MainActivity: Activity(){
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        this.setContentView(R.layout.activity_main)
 
         LoggerOutputStream().setSystemIO()
 
@@ -72,10 +73,10 @@ class MainActivity: Activity(){
             setOnClickListener{
                 try{
                     setText(R.string.pressed)
-                    copyPlainText()
+                    clipboard.copyPlainText()
                     println("copied to clipboard")
                     Log.i(TAG, "now paste")
-                    pastePlainText()
+                    clipboard.pastePlainText()
                 } catch(e: Exception){
                     e.printStackTrace()
                 }
@@ -85,10 +86,10 @@ class MainActivity: Activity(){
             setOnClickListener{
                 try{
                     setText(R.string.pressed)
-                    copyContentUri()
+                    clipboard.copyContentUri(cr)
                     println("copied content uri to clipboard")
                     Log.i(TAG, "now paste")
-                    pasteContentUri()
+                    clipboard.pasteContentUri(cr)
                 } catch(e: Exception){
                     e.printStackTrace()
                 }
@@ -99,56 +100,14 @@ class MainActivity: Activity(){
         println("Hello from println()")
         println("SDK Level: ${android.os.Build.VERSION.SDK_INT}")
     }
+
+    public override fun onStart(){
+        super.onStart()
+        println("com.randomapp.fastpaste.MainActivity.onStart() invoked")
+    }
+
     public override fun onStop(){
         super.onStop()
-    }
-
-
-    // https://developer.android.com/guide/topics/text/copy-paste
-    private fun copyPlainText(){
-        val clip: ClipData = ClipData.newPlainText("simple text", "Hello")
-        clipboard.primaryClip = clip
-    }
-
-    private fun pastePlainText() = with(clipboard){
-        if(!hasPrimaryClip()) return
-        if(primaryClipDescription?.hasMimeType("text/plain") == true){
-            var item = primaryClip!!.getItemAt(0)
-            item.text?.let{
-                print("text pasted from clipboard: ")
-                println(it)
-            }
-        }
-    }
-
-    private fun copyContentUri(){
-        clipboard.primaryClip = ClipData.newUri(getContentResolver(), "URI",
-                Uri.parse("content://com.randommain.fastpaste/paste1/Hello"
-        ))
-    }
-    private fun pasteContentUri(){
-        if(!clipboard.hasPrimaryClip()) return
-
-        // val clipDescription = clipboard.getPrimaryClipDescription()
-
-        val clip = clipboard.primaryClip
-        val pasteUri = clip?.run{
-            getItemAt(0).uri
-        }
-        println("getItemAt(0).uri: $pasteUri")
-        pasteUri?.let{
-            var uriMimeType = cr.getType(it)
-            println("mime: $uriMimeType")
-            uriMimeType?.takeIf{
-                it == ClipDescription.MIMETYPE_TEXT_URILIST
-            }?.apply{
-                cr.query(pasteUri, null, null, null, null)?.use{
-                    if(it.moveToFirst()){
-                        println("column count: ${it.columnCount}")
-                        println("row count: ${it.count}")
-                    }
-                }
-            }
-        }
+        println("com.randomapp.fastpaste.MainActivity.onStop() invoked")
     }
 }
