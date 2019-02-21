@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/celeste">
 
     <!--
     https://developer.android.com/reference/android/view/View
@@ -16,7 +17,7 @@ why-doesnt-androidforeground-attribute-work
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/hello_msg"
-        android:background="@color/white"
+        android:background="@color/black"
         tools:context=".MainActivity" />
     <Button
         android:id="@+id/activity_main_button1"
@@ -33,4 +34,14 @@ why-doesnt-androidforeground-attribute-work
         android:layout_height="wrap_content"
         android:layout_below="@id/activity_main_button1"
         android:text="@string/activity_main_button1" />
+
+    <android.inputmethodservice.KeyboardView
+        android:id="@+id/numpad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:visibility="gone" />
 </RelativeLayout>

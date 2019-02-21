@@ -4,8 +4,12 @@ import android.app.Activity
 import android.content.ClipboardManager
 import android.content.ContentResolver
 import android.content.Context
+import android.inputmethodservice.Keyboard
+import android.inputmethodservice.KeyboardView
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import android.webkit.WebView
 import android.widget.Button
 
@@ -53,12 +57,41 @@ private class LoggerOutputStream: OutputStream(){
 }
 
 
-class MainActivity: Activity(){
+class MainActivity: AppCompatActivity(){
     private val clipboard: ClipboardManager by lazy{
         getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     }
     private val cr: ContentResolver by lazy{
         getContentResolver()
+    }
+
+    private val numpad: KeyboardView by lazy{
+        findViewById<KeyboardView>(R.id.numpad).also{ keyboardView ->
+            Keyboard(this, R.xml.numpad).let{ keyboard ->
+                keyboardView.setKeyboard(keyboard)
+                // keyboardView.setOnKeyboardActionListener{}
+            }
+            keyboardView.setPreviewEnabled(false)
+
+            val listener = object: KeyboardView.OnKeyboardActionListener{
+                override fun onKey(primaryCode: Int, keyCodes: IntArray){
+                    println("key pressed: ${primaryCode}")
+                    println(this)
+                    println( this@MainActivity ) // syntax hightlight error
+                }
+                override fun onPress(primaryCode: Int){}
+                override fun onRelease(primaryCode: Int){}
+                override fun onText(text: CharSequence){}
+                override fun swipeDown(){}
+                override fun swipeLeft(){}
+                override fun swipeRight(){}
+                override fun swipeUp(){}
+            }
+
+            // keyboardView.setVerticalOffset
+
+            keyboardView.setOnKeyboardActionListener(listener)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?){
@@ -77,6 +110,8 @@ class MainActivity: Activity(){
                     println("copied to clipboard")
                     Log.i(TAG, "now paste")
                     clipboard.pastePlainText()
+                    numpad.visibility = View.VISIBLE
+                    numpad.setEnabled(true)
                 } catch(e: Exception){
                     e.printStackTrace()
                 }
@@ -106,8 +141,24 @@ class MainActivity: Activity(){
         println("com.randomapp.fastpaste.MainActivity.onStart() invoked")
     }
 
+    public override fun onRestart(){
+        super.onRestart()
+    }
+
+    public override fun onResume(){
+        super.onResume()
+    }
+
+    public override fun onPause(){
+        super.onPause()
+    }
+
     public override fun onStop(){
         super.onStop()
         println("com.randomapp.fastpaste.MainActivity.onStop() invoked")
+    }
+
+    public override fun onDestroy(){
+        super.onDestroy()
     }
 }

@@ -10,19 +10,51 @@ https://www.hanshq.net/command-line-android.html
 
 :start
 
+set "cwd=%cd%"
+set "PROJ=D:\GoogleDrive\sync\main-custom-project\code\android\app"
+cd /D "%PROJ%"
+
+call :sep
+echo.
+echo ^> build.bat %*
+echo.
+echo.
+call :sep
+
 if "%~1 %~2"=="run only" (
     Goto :run
 )
 
+:: set "FILE_ROOT=%~dp0"
+:: cd /D "%FILE_ROOT%"
+cmd /c gradle assemble lint
+if %errorlevel% neq 0 (
+    echo errorlevel: %errorlevel%
+    echo compile error: stop executing
+    call :sep
+    echo.
+    Goto :end
+)
 
+call :sep
+echo lint report:
+echo file:///D:/workspace/main-custom-project/code/android/app/build/reports/lint-results.html#GradleOverrides
+
+if "%~1"=="run" (
+    Goto :run
+)
+Goto :end
+
+:: legacy
+
+if "%~1 %~2"=="run only" (
+    Goto :run
+)
 if "%USE_KOTLIN%"=="" (
     set USE_KOTLIN=true
 )
 
-set "cwd=%cd%"
 
-set "PROJ=D:\GoogleDrive\sync\main-custom-project\code\android\fastpaste"
-cd /D "%PROJ%"
 
 echo project root: %PROJ%
 echo.
@@ -125,9 +157,9 @@ cmd /c adb -s %ADB_DEVICE% uninstall %PROJECT_PACKAGE%
 cmd /c adb -s %ADB_DEVICE% install -r bin/app.apk
 cmd /c adb -s %ADB_DEVICE% shell am start -n %PROJECT_PACKAGE%/.MainActivity
 call :sep
-echo program output
+echo program output ^> adb logcat MyActivity:D AndroidRuntime:E *:S
 call :sep
-cmd /c adb logcat MyActivity:D *:S
+cmd /c adb logcat MyActivity:D AndroidRuntime:E *:S
 
 :: adb forward tcp:40000 localabstract:com.randommain.fastpaste-inspectorServer
 :: adb forward tcp:40001 localabstract:chrome_devtools_remote

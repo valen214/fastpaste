@@ -31,10 +31,15 @@ apply plugin: "kotlin-android"
 android {
     // android.sdkDirectory = "$sdk_dir" // read-only
     // shorter than .toString()
-    assert "${properties.sdkDirectory}" == System.getenv("ANDROID_SDK_HOME")
+    assert "${properties.sdkDirectory}" == System.getenv("ANDROID_HOME")
 
-    applicationVariants.all{ variant ->
-        println("variant: ${variant.getPackageApplicationProvider().get().outputs.files[1]}")
+    // applicationVariants.all{ variant ->
+    variantFilter{ variant ->
+        if(variant.buildType.name == "debug"){
+            setIgnore(true)
+        } else{
+            println("variant: ${variant}")
+        }
     }
 
     compileSdkVersion 28
@@ -42,7 +47,7 @@ android {
 
     defaultConfig {
         applicationId "com.randommain.fastpaste"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 28
         // versionCode 1
         // versionName "1.0"
@@ -50,7 +55,7 @@ android {
 
     signingConfigs {
         release {
-// keytool -genkeypair -validity 365 -keystore bin\key.keystore -keyalg RSA -keysize 2048
+            // keytool -genkeypair -validity 365 -keystore bin\key.keystore -keyalg RSA -keysize 2048
             storeFile file("bin/key.keystore")
             storePassword "TemporaryPassword"
             keyAlias "mykey"
@@ -62,6 +67,7 @@ android {
             signingConfig signingConfigs.release
 
             minifyEnabled true
+            // more or less useless
             proguardFiles getDefaultProguardFile("proguard-android.txt")
         }
     }
@@ -75,6 +81,7 @@ android {
             manifest.srcFile "AndroidManifest.xml"
 
             // buildDir = "bin"
+            // systemProperty "sdk.dir" ""
         }
     }
 }
@@ -84,6 +91,7 @@ repositories {
     jcenter()
 }
 dependencies {
+    implementation "com.android.support:appcompat-v7:28.0.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
@@ -91,3 +99,32 @@ task cleanApk(type: Delete){
     delete "bin/app.apk"
 }
 clean.dependsOn(cleanApk)
+
+task copyApkToBin(type: Copy){
+    from file("build/outputs/apk/release/app-release.apk")
+    into file("bin/")
+    // rename '(.+)-staging(.+)', '$1$2'
+    rename "app-release.apk", "app.apk"
+    println("copied app.apk")
+    /*
+    rootProject.assemble.properties.each{ key, value ->
+        println("$key: $value")
+    }
+    */
+}
+rootProject.assemble.finalizedBy copyApkToBin
+/*
+println rootProject.allprojects.tasks
+println(rootProject.getAllTasks(true))
+gradle.taskGraph.whenReady { graph ->
+    def projects = graph.allTasks.collect { it.project }.toSet()
+    projects.each {
+        println "Project is being used in this build: " + it
+    }
+}
+*/
+
+task custom_assemble(type: GradleBuild){
+    tasks = ['clean', 'assemble', 'lint']
+    println("file:///D:/workspace/main-custom-project/code/android/app/build/reports/lint-results.html#GradleOverrides")
+}
