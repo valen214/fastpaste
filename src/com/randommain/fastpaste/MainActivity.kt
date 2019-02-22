@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.Button
 
@@ -40,10 +41,11 @@ private class LoggerOutputStream: OutputStream(){
 
     override fun write(b: Int){
         when(b){
-            10 -> { // LF, CR is 13
+            10 -> { // LF is 10, CR is 13
                 Log.i(TAG, line_buffer.toString())
                 line_buffer.setLength(0)
             }
+            13 -> {}
             else -> line_buffer.append(b.toChar())
         }
     }
@@ -96,9 +98,11 @@ class MainActivity: AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        this.setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
         LoggerOutputStream().setSystemIO()
+
+        println(getViewTree(getWindow().getDecorView().getRootView() as ViewGroup))
 
         // WebView.setWebContentsDebuggingEnabled(true)
 
@@ -161,4 +165,34 @@ class MainActivity: AppCompatActivity(){
     public override fun onDestroy(){
         super.onDestroy()
     }
+}
+
+
+fun getViewTree(root: ViewGroup): String{
+    fun getViewDesc(v: View): String{
+        val res = v.getResources()
+        val id = v.getId()
+        return "[${v::class.simpleName}]: " + when(true){
+            res == null -> "no_resouces"
+            id > 0 -> try{
+                res.getResourceName(id)
+            } catch(e: android.content.res.Resources.NotFoundException){
+                "name_not_found"
+            }
+            else -> "no_id"
+        }
+    }
+    
+    val output = StringBuilder(getViewDesc(root))
+    for(i in 0 until root.getChildCount()){
+        val v = root.getChildAt(i)
+        output.append("\n").append(
+            if(v is ViewGroup){
+                getViewTree(v).prependIndent("  ")
+            } else{
+                "  " + getViewDesc(v)
+            }
+        )
+    }
+    return output.toString()
 }

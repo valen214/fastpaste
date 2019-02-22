@@ -173,10 +173,10 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 8 warnings</span>
+      <span class="mdl-layout-title">Lint Report: 10 warnings</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-Check performed at Fri Feb 22 04:59:08 CST 2019      </nav>
+Check performed at Sat Feb 23 06:25:17 CST 2019      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -188,6 +188,7 @@ Check performed at Fri Feb 22 04:59:08 CST 2019      </nav>
       <a class="mdl-navigation__link" href="#UnusedResources"><i class="material-icons warning-icon">warning</i>Unused resources (4)</a>
       <a class="mdl-navigation__link" href="#MissingApplicationIcon"><i class="material-icons warning-icon">warning</i>Missing application icon (1)</a>
       <a class="mdl-navigation__link" href="#GoogleAppIndexingWarning"><i class="material-icons warning-icon">warning</i>Missing support for Firebase App Indexing (1)</a>
+      <a class="mdl-navigation__link" href="#RtlHardcoded"><i class="material-icons warning-icon">warning</i>Using left/right instead of start/end attributes (2)</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
@@ -223,6 +224,11 @@ Check performed at Fri Feb 22 04:59:08 CST 2019      </nav>
 <tr>
 <td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#GoogleAppIndexingWarning">GoogleAppIndexingWarning</a>: Missing support for Firebase App Indexing</td></tr>
+<tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Internationalization:Bidirectional Text">Internationalization:Bidirectional Text</a>
+</td></tr>
+<tr>
+<td class="countColumn">2</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#RtlHardcoded">RtlHardcoded</a>: Using left/right instead of start/end attributes</td></tr>
 <tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (31)</a>
 </td></tr></table>
 <br/>              </div>
@@ -246,8 +252,8 @@ Dismiss</button>            </div>
 </span><span class="lineno">  9 </span><span class="comment">            android:targetSdkVersion="28" />
 </span><span class="lineno"> 10 </span><span class="comment">    --></span>
 <span class="caretline"><span class="lineno"> 11 </span>    <span class="tag">&lt;</span><span class="warning"><span class="tag">application</span></span><span class="attribute"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="attribute">
-</span><span class="lineno"> 12 </span><span class="attribute">            </span><span class="prefix">android:</span><span class="attribute">allowBackup</span>=<span class="value">"true"</span>
-<span class="lineno"> 13 </span>            <span class="prefix">android:</span><span class="attribute">theme</span>=<span class="value">"@style/Theme.AppCompat.Light"</span>>
+</span><span class="lineno"> 12 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">allowBackup</span>=<span class="value">"true"</span>
+<span class="lineno"> 13 </span>        <span class="prefix">android:</span><span class="attribute">theme</span>=<span class="value">"@style/Theme.AppCompat.Light"</span>>
 <span class="lineno"> 14 </span>        <span class="tag">&lt;activity</span><span class="attribute">
 </span></pre>
 
@@ -433,8 +439,8 @@ Dismiss</button>            </div>
 </span><span class="lineno">  9 </span><span class="comment">            android:targetSdkVersion="28" />
 </span><span class="lineno"> 10 </span><span class="comment">    --></span>
 <span class="caretline"><span class="lineno"> 11 </span>    <span class="tag">&lt;</span><span class="warning"><span class="tag">application</span></span><span class="attribute"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="attribute">
-</span><span class="lineno"> 12 </span><span class="attribute">            </span><span class="prefix">android:</span><span class="attribute">allowBackup</span>=<span class="value">"true"</span>
-<span class="lineno"> 13 </span>            <span class="prefix">android:</span><span class="attribute">theme</span>=<span class="value">"@style/Theme.AppCompat.Light"</span>>
+</span><span class="lineno"> 12 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">allowBackup</span>=<span class="value">"true"</span>
+<span class="lineno"> 13 </span>        <span class="prefix">android:</span><span class="attribute">theme</span>=<span class="value">"@style/Theme.AppCompat.Light"</span>>
 <span class="lineno"> 14 </span>        <span class="tag">&lt;activity</span><span class="attribute">
 </span></pre>
 
@@ -485,8 +491,8 @@ Dismiss</button>            </div>
 </span><span class="lineno">  9 </span><span class="comment">            android:targetSdkVersion="28" />
 </span><span class="lineno"> 10 </span><span class="comment">    --></span>
 <span class="caretline"><span class="lineno"> 11 </span>    <span class="warning"><span class="tag">&lt;application</span><span class="attribute"></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="attribute">
-</span><span class="lineno"> 12 </span><span class="attribute">            </span><span class="prefix">android:</span><span class="attribute">allowBackup</span>=<span class="value">"true"</span>
-<span class="lineno"> 13 </span>            <span class="prefix">android:</span><span class="attribute">theme</span>=<span class="value">"@style/Theme.AppCompat.Light"</span>>
+</span><span class="lineno"> 12 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">allowBackup</span>=<span class="value">"true"</span>
+<span class="lineno"> 13 </span>        <span class="prefix">android:</span><span class="attribute">theme</span>=<span class="value">"@style/Theme.AppCompat.Light"</span>>
 <span class="lineno"> 14 </span>        <span class="tag">&lt;activity</span><span class="attribute">
 </span></pre>
 
@@ -516,6 +522,71 @@ To suppress this error, use the issue id "GoogleAppIndexingWarning" as explained
               <div class="mdl-card__actions mdl-card--border">
 <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationGoogleAppIndexingWarningLink" onclick="reveal('explanationGoogleAppIndexingWarning');">
 Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="GoogleAppIndexingWarningCardLink" onclick="hideid('GoogleAppIndexingWarningCard');">
+Dismiss</button>            </div>
+            </div>
+          </section>
+<a name="Internationalization:Bidirectional Text"></a>
+<a name="RtlHardcoded"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="RtlHardcodedCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Using left/right instead of start/end attributes</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../res/layout/activity_main.xml">../../res/layout/activity_main.xml</a>:42</span>: <span class="message">Consider adding <code>android:layout_alignParentStart="true"</code> to better support right-to-left layouts</span><br /><pre class="errorlines">
+<span class="lineno"> 39 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">id</span>=<span class="value">"@+id/numpad"</span>
+<span class="lineno"> 40 </span>        <span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"match_parent"</span>
+<span class="lineno"> 41 </span>        <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
+<span class="caretline"><span class="lineno"> 42 </span>        <span class="warning"><span class="prefix">android:</span><span class="attribute">layout_alignParentLeft</span></span>=<span class="value">"true"</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 43 </span>        <span class="prefix">android:</span><span class="attribute">layout_alignParentRight</span>=<span class="value">"true"</span>
+<span class="lineno"> 44 </span>        <span class="prefix">android:</span><span class="attribute">layout_alignParentBottom</span>=<span class="value">"true"</span>
+<span class="lineno"> 45 </span>        <span class="prefix">android:</span><span class="attribute">focusable</span>=<span class="value">"true"</span>
+</pre>
+
+<span class="location"><a href="../../res/layout/activity_main.xml">../../res/layout/activity_main.xml</a>:43</span>: <span class="message">Consider adding <code>android:layout_alignParentEnd="true"</code> to better support right-to-left layouts</span><br /><pre class="errorlines">
+<span class="lineno"> 40 </span>        <span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"match_parent"</span>
+<span class="lineno"> 41 </span>        <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 42 </span>        <span class="prefix">android:</span><span class="attribute">layout_alignParentLeft</span>=<span class="value">"true"</span>
+<span class="caretline"><span class="lineno"> 43 </span>        <span class="warning"><span class="prefix">android:</span><span class="attribute">layout_alignParentRight</span></span>=<span class="value">"true"</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 44 </span>        <span class="prefix">android:</span><span class="attribute">layout_alignParentBottom</span>=<span class="value">"true"</span>
+<span class="lineno"> 45 </span>        <span class="prefix">android:</span><span class="attribute">focusable</span>=<span class="value">"true"</span>
+<span class="lineno"> 46 </span>        <span class="prefix">android:</span><span class="attribute">focusableInTouchMode</span>=<span class="value">"true"</span>
+</pre>
+
+</div>
+<div class="metadata"><div class="explanation" id="explanationRtlHardcoded" style="display: none;">
+Using <code>Gravity#LEFT</code> and <code>Gravity#RIGHT</code> can lead to problems when a layout is rendered in locales where text flows from right to left. Use <code>Gravity#START</code> and <code>Gravity#END</code> instead. Similarly, in XML <code>gravity</code> and <code>layout_gravity</code> attributes, use <code>start</code> rather than <code>left</code>.<br/>
+<br/>
+For XML attributes such as paddingLeft and <code>layout_marginLeft</code>, use <code>paddingStart</code> and <code>layout_marginStart</code>. <b>NOTE</b>: If your <code>minSdkVersion</code> is less than 17, you should add <b>both</b> the older left/right attributes <b>as well as</b> the new start/right attributes. On older platforms, where RTL is not supported and the start/right attributes are unknown and therefore ignored, you need the older left/right attributes. There is a separate lint check which catches that type of error.<br/>
+<br/>
+(Note: For <code>Gravity#LEFT</code> and <code>Gravity#START</code>, you can use these constants even when targeting older platforms, because the <code>start</code> bitmask is a superset of the <code>left</code> bitmask. Therefore, you can use <code>gravity="start"</code> rather than <code>gravity="left|start"</code>.)<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+To suppress this error, use the issue id "RtlHardcoded" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">RtlHardcoded</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Bidirectional Text</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Internationalization</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 5/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationRtlHardcodedLink" onclick="reveal('explanationRtlHardcoded');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="RtlHardcodedCardLink" onclick="hideid('RtlHardcodedCard');">
 Dismiss</button>            </div>
             </div>
           </section>

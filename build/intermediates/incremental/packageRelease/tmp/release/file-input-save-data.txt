@@ -1,7 +1,7 @@
 #Internal package file, do not edit.
-#Fri Feb 22 04:59:07 CST 2019
+#Sat Feb 23 06:25:16 CST 2019
 0.baseType=DIRECTORY
-0.base=D\:\\workspace\\main-custom-project\\code\\android\\app\\build\\intermediates\\transforms\\dexMerger\\release\\0
+0.base=D\:\\GoogleDrive\\sync\\main-custom-project\\code\\android\\app\\build\\intermediates\\transforms\\dexMerger\\release\\0
 0.path=classes.dex
 0.set=DEX
 count=1

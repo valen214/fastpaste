@@ -14,20 +14,27 @@ set "cwd=%cd%"
 set "PROJ=D:\GoogleDrive\sync\main-custom-project\code\android\app"
 cd /D "%PROJ%"
 
+<nul set /p=[94m
 call :sep
 echo.
-echo ^> build.bat %*
-echo.
-echo.
-call :sep
-
+echo ^> build.bat %*[0m
 if "%~1 %~2"=="run only" (
+    <nul set /p=[94m
+    echo.
+    call :sep
+    echo.[0m
     Goto :run
 )
 
 :: set "FILE_ROOT=%~dp0"
 :: cd /D "%FILE_ROOT%"
-cmd /c gradle assemble lint
+<nul set /p=[94m
+echo ^> gradle --build-cache -w assemble lint
+echo.
+echo.
+call :sep
+echo.[0m
+cmd /c gradle --build-cache -w assemble lint
 if %errorlevel% neq 0 (
     echo errorlevel: %errorlevel%
     echo compile error: stop executing
@@ -36,9 +43,14 @@ if %errorlevel% neq 0 (
     Goto :end
 )
 
+echo.
+echo.
 call :sep
+echo.
 echo lint report:
 echo file:///D:/workspace/main-custom-project/code/android/app/build/reports/lint-results.html#GradleOverrides
+echo.
+call :sep
 
 if "%~1"=="run" (
     Goto :run
@@ -146,7 +158,6 @@ if not "%~1"=="run" (
 )
 
 :run
-call :sep
 echo running with adb
 :: nox_adb connect 127.0.0.1:62001
 :: adb devices
@@ -157,7 +168,9 @@ cmd /c adb -s %ADB_DEVICE% uninstall %PROJECT_PACKAGE%
 cmd /c adb -s %ADB_DEVICE% install -r bin/app.apk
 cmd /c adb -s %ADB_DEVICE% shell am start -n %PROJECT_PACKAGE%/.MainActivity
 call :sep
+echo.
 echo program output ^> adb logcat MyActivity:D AndroidRuntime:E *:S
+echo.
 call :sep
 cmd /c adb logcat MyActivity:D AndroidRuntime:E *:S
 

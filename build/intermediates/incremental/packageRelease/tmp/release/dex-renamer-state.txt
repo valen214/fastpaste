@@ -1,4 +1,4 @@
-#Fri Feb 22 04:59:07 CST 2019
-base.0=D\:\\workspace\\main-custom-project\\code\\android\\app\\build\\intermediates\\transforms\\dexMerger\\release\\0
+#Sat Feb 23 06:25:16 CST 2019
+base.0=D\:\\GoogleDrive\\sync\\main-custom-project\\code\\android\\app\\build\\intermediates\\transforms\\dexMerger\\release\\0
 path.0=classes.dex
 renamed.0=classes.dex

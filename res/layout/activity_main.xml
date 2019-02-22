@@ -39,9 +39,10 @@ why-doesnt-androidforeground-attribute-work
         android:id="@+id/numpad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 </RelativeLayout>
