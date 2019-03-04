@@ -28,13 +28,15 @@ if "%~1 %~2"=="run only" (
 
 :: set "FILE_ROOT=%~dp0"
 :: cd /D "%FILE_ROOT%"
+set "gradle_cmd=gradle --build-cache -w assemble lint"
+::  --warning-mode none
 <nul set /p=[94m
-echo ^> gradle --build-cache -w assemble lint
+echo ^> %gradle_cmd%
 echo.
 echo.
 call :sep
 echo.[0m
-cmd /c gradle --build-cache -w assemble lint
+cmd /c %gradle_cmd%
 if %errorlevel% neq 0 (
     echo errorlevel: %errorlevel%
     echo compile error: stop executing

@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.Button
+import android.widget.Toast
 
 import java.io.OutputStream
 import java.io.PrintStream
@@ -75,24 +76,22 @@ class MainActivity: AppCompatActivity(){
             }
             keyboardView.setPreviewEnabled(false)
 
-            val listener = object: KeyboardView.OnKeyboardActionListener{
-                override fun onKey(primaryCode: Int, keyCodes: IntArray){
-                    println("key pressed: ${primaryCode}")
-                    println(this)
-                    println( this@MainActivity ) // syntax hightlight error
-                }
-                override fun onPress(primaryCode: Int){}
-                override fun onRelease(primaryCode: Int){}
-                override fun onText(text: CharSequence){}
-                override fun swipeDown(){}
-                override fun swipeLeft(){}
-                override fun swipeRight(){}
-                override fun swipeUp(){}
-            }
-
             // keyboardView.setVerticalOffset
 
-            keyboardView.setOnKeyboardActionListener(listener)
+            keyboardView.setOnKeyboardActionListener(
+                object: KeyboardView.OnKeyboardActionListener{
+                    override fun onKey(primaryCode: Int, keyCodes: IntArray){
+                        println("key pressed: ${primaryCode}")
+                    }
+                    override fun onPress(primaryCode: Int){}
+                    override fun onRelease(primaryCode: Int){}
+                    override fun onText(text: CharSequence){}
+                    override fun swipeDown(){}
+                    override fun swipeLeft(){}
+                    override fun swipeRight(){}
+                    override fun swipeUp(){}
+                }
+            )
         }
     }
 
@@ -102,7 +101,8 @@ class MainActivity: AppCompatActivity(){
 
         LoggerOutputStream().setSystemIO()
 
-        println(getViewTree(getWindow().getDecorView().getRootView() as ViewGroup))
+        println(getViewTree(
+                getWindow().getDecorView().getRootView() as ViewGroup))
 
         // WebView.setWebContentsDebuggingEnabled(true)
 
@@ -113,6 +113,8 @@ class MainActivity: AppCompatActivity(){
                     clipboard.copyPlainText()
                     println("copied to clipboard")
                     Log.i(TAG, "now paste")
+                    Toast.makeText(this@MainActivity,
+                            "pasting", Toast.LENGTH_SHORT).show()
                     clipboard.pastePlainText()
                     numpad.visibility = View.VISIBLE
                     numpad.setEnabled(true)
