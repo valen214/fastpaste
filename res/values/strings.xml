@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <resources>
-    <string name="activity_main_button1">I am a button</string>
+    <string name="activity_main_button1">button why capital</string>
     <string name="app_name">A Hello Android</string>
     <string name="hello_msg">Hello Android!</string>
     <string name="menu_settings">Settings</string>

@@ -81,7 +81,7 @@ android {
 
             minifyEnabled true
             // more or less useless
-            proguardFiles getDefaultProguardFile("proguard-android.txt")
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
 
