@@ -5,7 +5,7 @@
 https://docs.gradle.org/current/javadoc/org/gradle/api/execution/TaskActionListener.html
 
 */
-
+// rootProject.name = ""
 
 buildscript {
     ext.kotlin_version = "1.3.21"
@@ -43,7 +43,7 @@ allprojects
 android {
     // assert System.getenv("ANDROID_HOME") != null
 
-    /*
+    /*****/
     // applicationVariants.all{ variant ->
     variantFilter{ variant ->
         if(variant.buildType.name == "debug"){
@@ -59,11 +59,16 @@ android {
 
     defaultConfig {
         applicationId "com.randommain.fastpaste"
+        applicationIdSuffix ""
         minSdkVersion 14
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner(
+                "android.support.test.runner.AndroidJUnitRunner")
+        manifestPlaceholders = [
+                full_package: "com.randommain.webapp"
+        ]
     }
 
     signingConfigs {
@@ -79,9 +84,10 @@ android {
         release  {
             signingConfig signingConfigs.release
 
-            minifyEnabled true
+            minifyEnabled false
             // more or less useless
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            proguardFiles getDefaultProguardFile("proguard-android.txt")
+            // proguardFiles "proguard-android.txt" // "proguard-rules.pro"
         }
     }
 
@@ -99,7 +105,10 @@ android {
     }
 }
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(
+            dir: 'bulid/intermediates/javac/release',
+            include: ['*.class'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:28.0.0"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
@@ -115,10 +124,11 @@ task cleanApk(type: Delete){
 clean.dependsOn(cleanApk)
 
 task copyApkToBin(type: Copy){
-    from file("build/outputs/apk/release/app-release.apk")
+    def type = true ? "release" : "debug" // skipped debug variant above
+    from file("build/outputs/apk/${type}/app-${type}.apk")
     into file("bin/")
     // rename '(.+)-staging(.+)', '$1$2'
-    rename "app-release.apk", "app.apk"
+    rename "app-${type}.apk", "app.apk"
     println("copied app.apk")
     /*
     rootProject.assemble.properties.each{ key, value ->

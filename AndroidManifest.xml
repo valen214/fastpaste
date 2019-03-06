@@ -7,6 +7,10 @@
     <uses-sdk
             android:minSdkVersion="14"
             android:targetSdkVersion="28" />
+    
+
+    - variables
+    https://developer.android.com/studio/build/manifest-build-variables
     -->
     <application
         android:allowBackup="true"

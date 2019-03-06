@@ -1,4 +1,7 @@
--basedirectory D:\GoogleDrive\sync\main-custom-project\code\android\fastpaste
+
+
+
+-basedirectory D:\GoogleDrive\sync\main-custom-project\code\android\app
 -injar bin\app.apk
 -outjar bin\app.pro.apk
 -libraryjars D:\software\android_sdk\platforms\android-28\android.jar

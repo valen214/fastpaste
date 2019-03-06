@@ -107,30 +107,30 @@ class MainActivity: AppCompatActivity(){
 
         // WebView.setWebContentsDebuggingEnabled(true)
 
-        with(findViewById(R.id.activity_main_button1) as Button){
+        with(findViewById(R.id.activity_main_clear_button1) as Button){
             setOnClickListener{
                 try{
                     setText(R.string.pressed)
                     clipboard.copyPlainText()
                     println("copied to clipboard")
-                    Log.i(TAG, "now paste")
+                    println("now paste")
                     Toast.makeText(this@MainActivity,
                             "pasting", Toast.LENGTH_SHORT).show()
                     clipboard.pastePlainText()
-                    numpad.visibility = View.VISIBLE
+                    (numpad.getParent() as View).visibility = View.VISIBLE
                     numpad.setEnabled(true)
                 } catch(e: Exception){
                     e.printStackTrace()
                 }
             }
         }
-        with(findViewById(R.id.activity_main_button2) as Button){
+        with(findViewById(R.id.activity_main_clear_button2) as Button){
             setOnClickListener{
                 try{
                     setText(R.string.pressed)
                     clipboard.copyContentUri(cr)
                     println("copied content uri to clipboard")
-                    Log.i(TAG, "now paste")
+                    println("now paste")
                     clipboard.pasteContentUri(cr)
                 } catch(e: Exception){
                     e.printStackTrace()

@@ -28,6 +28,7 @@ if "%~1 %~2"=="run only" (
 
 :: set "FILE_ROOT=%~dp0"
 :: cd /D "%FILE_ROOT%"
+:: debug variant is skipped in build.gradle
 set "gradle_cmd=gradle --build-cache --offline -w assemble lint"
 :: -Pandroid.optional.compilation=INSTANT_DEV -Pandroid.injected.build.api=28"
 ::  --warning-mode none

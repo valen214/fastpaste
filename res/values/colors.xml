@@ -7,4 +7,6 @@ https://developer.android.com/guide/topics/resources/more-resources#Color
     <color name="violet">#faaf</color>
     <color name="white">#ffff</color>
     <color name="celeste">#ffb2ffff</color>
+    <color name="trans">#0000</color>
+    <color name="half_trans">#8000</color>
 </resources>

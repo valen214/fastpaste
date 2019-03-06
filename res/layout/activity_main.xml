@@ -5,13 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/celeste"
-    android:textAllCaps="false">
+    android:background="@color/celeste" >
 
     <!--
     https://developer.android.com/reference/android/view/View
     https://stackoverflow.com/questions/52329249/
 why-doesnt-androidforeground-attribute-work
+
+
+- relative layout params
+https://developer.android.com/reference/android/widget/RelativeLayout.LayoutParams.html
+
+android:typeface="Consolas"
     -->
     <android.support.v7.widget.Toolbar
         android:id="@+id/activity_main_toolbar"
@@ -20,39 +25,83 @@ why-doesnt-androidforeground-attribute-work
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:text="My Toolbar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-    <TextView
-        android:id="@+id/hello_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/hello_msg"
-        android:background="@color/black"
-        tools:context=".MainActivity" />
-    <Button
-        android:id="@+id/activity_main_button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/activity_main_input1"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/hello_text"
-        android:text="@string/activity_main_button1"
-        android:background="@color/violet"
-        tools:context=".MainActivity" />
+        android:layout_marginTop="200dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:background="@color/half_trans"
+        android:textColor="@color/violet"
+        android:hint="@string/inclusive"
+        android:inputType="number" />
     <Button
-        android:id="@+id/activity_main_button2"
+        android:id="@+id/activity_main_clear_button1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_toRightOf="@id/activity_main_input1"
+        android:layout_alignTop="@id/activity_main_input1"
+        android:layout_marginLeft="15dp"
+        android:background="@color/half_trans"
+        android:text="clear"
+        android:textAllCaps="false" />
+    <TextView
+        android:id="@+id/activity_main_label1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/activity_main_button1"
-        android:text="@string/activity_main_button1" />
+        android:layout_below="@id/activity_main_input1"
+        android:layout_centerHorizontal="true"
+        android:text="To"
+        android:layout_marginTop="35dp"
+        android:background="@color/half_trans"
+        tools:context=".MainActivity" />
+    <EditText
+        android:id="@+id/activity_main_input2"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/activity_main_label1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:background="@color/half_trans"
+        android:textColor="@color/violet"
+        android:hint="@string/inclusive"
+        android:inputType="number" />
 
-    <android.inputmethodservice.KeyboardView
-        android:id="@+id/numpad"
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/activity_main_clear_button2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_toRightOf="@id/activity_main_input2"
+        android:layout_alignTop="@id/activity_main_input2"
+        android:layout_marginLeft="15dp"
+        android:background="@color/violet"
+        android:text="clear"
+        android:textAllCaps="false" />
+    
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:background="@color/trans" >
+
+        <android.inputmethodservice.KeyboardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@color/trans"
+            android:id="@+id/numpad"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+    </RelativeLayout>
 </RelativeLayout>

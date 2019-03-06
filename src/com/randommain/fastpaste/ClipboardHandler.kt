@@ -10,8 +10,8 @@ import android.net.Uri
 
 
     // https://developer.android.com/guide/topics/text/copy-paste
-fun ClipboardManager.copyPlainText(){
-    this.primaryClip = ClipData.newPlainText("simple text", "Hello")
+fun ClipboardManager.copyPlainText(text: String = "Hello"){
+    this.primaryClip = ClipData.newPlainText("simple text", text)
 }
 
 fun ClipboardManager.pastePlainText() = with(this){
