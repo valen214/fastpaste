@@ -104,6 +104,7 @@ class MainActivity: AppCompatActivity(){
 
         println(getViewTree(
                 getWindow().getDecorView().getRootView() as ViewGroup))
+        
 
         // WebView.setWebContentsDebuggingEnabled(true)
 
