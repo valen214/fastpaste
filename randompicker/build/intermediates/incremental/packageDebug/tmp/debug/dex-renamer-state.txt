@@ -1,0 +1,4 @@
+#Mon Mar 11 06:12:16 CST 2019
+base.0=D\:\\workspace\\main-custom-project\\code\\android\\app\\randompicker\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+path.0=classes.dex
+renamed.0=classes.dex

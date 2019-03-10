@@ -1,0 +1,17 @@
+
+
+
+android {
+    sourceSets {
+        main {
+            setRoot "src"
+            kotlin.srcDirs = ["src"]
+            java.srcDirs = ["src"]
+            res.srcDirs = ["res"]
+            manifest.srcFile "AndroidManifest.xml"
+
+            // buildDir = "bin"
+            // systemProperty "sdk.dir" ""
+        }
+    }
+}

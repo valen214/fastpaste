@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+    https://developer.android.com/reference/android/view/View
+    https://stackoverflow.com/questions/52329249/
+why-doesnt-androidforeground-attribute-work
+
+
+- relative layout params
+https://developer.android.com/reference/android/widget/RelativeLayout.LayoutParams.html
+
+android:typeface="Consolas"
+    -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:text="My Toolbar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <LinearLayout
+        android:id="@+id/activity_main_group1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:orientation="horizontal" >
+        <EditText
+            android:id="@+id/activity_main_input1"
+            style="@style/activity_main_number_input"
+            android:hint="@string/inc1" />
+        <Button
+            android:id="@+id/activity_main_clear_button1"
+            android:text="@string/clear"
+            style="@style/activity_main_button" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/activity_main_label1"
+        style="@style/activity_main_button"
+        android:minWidth="80dp"
+        android:text="To"
+        android:layout_below="@id/activity_main_group1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
+        tools:context=".MainActivity" />
+    <LinearLayout
+        android:id="@+id/activity_main_group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/activity_main_label1"
+        android:layout_marginTop="35dp"
+        android:orientation="horizontal" >
+        <EditText
+            android:id="@+id/activity_main_input2"
+            style="@style/activity_main_number_input"
+            android:hint="@string/inc10" />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/activity_main_clear_button2"
+            android:text="@string/clear"
+            style="@style/activity_main_button" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/activity_main_enter_button"
+        android:text="@string/enter"
+        style="@style/activity_main_button"
+        android:layout_below="@id/activity_main_group2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:background="@color/trans" >
+
+        <android.inputmethodservice.KeyboardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@color/half_trans"
+            android:id="@+id/numpad"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+    </RelativeLayout>
+</RelativeLayout>
