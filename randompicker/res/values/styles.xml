@@ -6,6 +6,7 @@
     <style name="activity_main_number_input">
         <item name="android:layout_width">250dp</item>
         <item name="android:layout_height">80dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
         <item name="android:singleLine">true</item>
         <!--
         <item name="android:hint">@string/inclusive</item>
@@ -16,13 +17,15 @@
         <item name="android:paddingLeft">15dp</item>
         <item name="android:paddingRight">15dp</item>
         <item name="android:background">@color/half_trans</item>
+        <item name="android:maxLength">9</item>
     </style>
     <style name="activity_main_button">
         <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_height">80dp</item>
+        <item name="android:minWidth">80dp</item>
         <item name="android:paddingLeft">15dp</item>
         <item name="android:paddingRight">15dp</item>
-        <item name="android:layout_marginLeft">15dp</item>
         <item name="android:background">@color/half_trans</item>
         <item name="android:textSize">32sp</item>
         <item name="android:textAllCaps">false</item>

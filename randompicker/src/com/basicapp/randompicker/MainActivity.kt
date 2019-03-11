@@ -93,11 +93,8 @@ class MainActivity: AppCompatActivity(){
         // WebView.setWebContentsDebuggingEnabled(true)
 
         val input1: TextView = findViewById(R.id.activity_main_input1)
-        val label1: TextView = findViewById(R.id.activity_main_label1)
+        val button1: TextView = findViewById(R.id.activity_main_button1)
         val input2: TextView = findViewById(R.id.activity_main_input2)
-        val button1: Button = findViewById(R.id.activity_main_clear_button1)
-        val button2: Button = findViewById(R.id.activity_main_clear_button2)
-        val button3: Button = findViewById(R.id.activity_main_enter_button)
 
         input1.setRawInputType(InputType.TYPE_CLASS_PHONE)
         input1.setText("", TextView.BufferType.EDITABLE)
@@ -107,58 +104,18 @@ class MainActivity: AppCompatActivity(){
 
         input1.setOnClickListener{
             this.showNumpad()
+            input1.setText("", TextView.BufferType.EDITABLE)
         }
         input2.setOnClickListener{
             this.showNumpad()
+            input2.setText("", TextView.BufferType.EDITABLE)
         }
 
         button1.setOnClickListener{
-            input1.setText("", TextView.BufferType.EDITABLE)
-            input1.requestFocus()
-
-            try{
-                button1.setText(R.string.pressed)
-                clipboard.copyPlainText()
-                println("copied to clipboard")
-                println("now paste")
-                Toast.makeText(this@MainActivity,
-                        "pasting", Toast.LENGTH_SHORT).show()
-                clipboard.pastePlainText()
-            } catch(e: Exception){
-                e.printStackTrace()
-            }
-        }
-
-        button2.setOnClickListener{
-            input2.setText("", TextView.BufferType.EDITABLE)
-            input2.requestFocus()
-
-            try{
-                button2.setText(R.string.pressed)
-                clipboard.copyContentUri(cr)
-                println("copied content uri to clipboard")
-                println("now paste")
-                clipboard.pasteContentUri(cr)
-            } catch(e: Exception){
-                e.printStackTrace()
-            }
-        }
-
-        button3.setOnClickListener{
-            val num1 = try{
-                input1.getText().toString().toInt()
-            } catch(e: Exception){
-                println(e)
-                1
-            }
-            val num2 = try{
-                input2.getText().toString().toInt()
-            } catch(e: Exception){
-                println(e)
-                10
-            }
+            val num1 = input1.getText().toString().ifEmpty{"1"}.toInt()
+            val num2 = input2.getText().toString().ifEmpty{"10"}.toInt()
             val out = (Math.min(num1, num2)..Math.max(num1, num2)).random()
-            label1.setText("${out}")
+            button1.setText("result: ${out}")
         }
 
         Log.i(TAG, "Hello from Log.i()")

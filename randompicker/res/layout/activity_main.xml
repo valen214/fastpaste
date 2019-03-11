@@ -26,57 +26,27 @@ android:typeface="Consolas"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         android:text="My Toolbar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-    <LinearLayout
-        android:id="@+id/activity_main_group1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+    <EditText
+        android:id="@+id/activity_main_input1"
+        style="@style/activity_main_number_input"
         android:layout_marginTop="200dp"
-        android:orientation="horizontal" >
-        <EditText
-            android:id="@+id/activity_main_input1"
-            style="@style/activity_main_number_input"
-            android:hint="@string/inc1" />
-        <Button
-            android:id="@+id/activity_main_clear_button1"
-            android:text="@string/clear"
-            style="@style/activity_main_button" />
-    </LinearLayout>
-    <TextView
-        android:id="@+id/activity_main_label1"
+        android:hint="@string/inc1" />
+    <Button
+        android:id="@+id/activity_main_button1"
         style="@style/activity_main_button"
-        android:minWidth="80dp"
-        android:text="To"
-        android:layout_below="@id/activity_main_group1"
-        android:layout_centerHorizontal="true"
+        android:text="@string/label1"
+        android:layout_below="@id/activity_main_input1"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="35dp"
         android:gravity="center"
         tools:context=".MainActivity" />
-    <LinearLayout
-        android:id="@+id/activity_main_group2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/activity_main_label1"
+    <EditText
+        android:id="@+id/activity_main_input2"
+        android:layout_below="@id/activity_main_button1"
         android:layout_marginTop="35dp"
-        android:orientation="horizontal" >
-        <EditText
-            android:id="@+id/activity_main_input2"
-            style="@style/activity_main_number_input"
-            android:hint="@string/inc10" />
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/activity_main_clear_button2"
-            android:text="@string/clear"
-            style="@style/activity_main_button" />
-    </LinearLayout>
-    <Button
-        android:id="@+id/activity_main_enter_button"
-        android:text="@string/enter"
-        style="@style/activity_main_button"
-        android:layout_below="@id/activity_main_group2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp" />
+        style="@style/activity_main_number_input"
+        android:hint="@string/inc10" />
+    
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

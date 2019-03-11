@@ -13,5 +13,6 @@
     <string name="inc1">&inc1;</string>
     <string name="inc10">&inc10;</string>
     <string name="clear">clear</string>
-    <string name="enter">enter</string>
+    <string name="enter">roll</string>
+    <string name="label1">press me</string>
 </resources>

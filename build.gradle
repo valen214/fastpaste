@@ -53,7 +53,7 @@ subprojects {
 
     ext.project_package = System.env.PROJECT_PACKAGE ?: (
             "com.android.${project.name}")
-    println("proejct.name: ${project.name}")
+    println("project.name: ${project.name}")
     
     // println(project.configurations)
 
@@ -89,7 +89,7 @@ subprojects {
                 println("outputFileName: ${outputFileName}")
 
                 clean.doLast{
-                    delete "../" + fileName
+                    delete fileName
                 }
                 /*
                 println("variant.outputs: ${output}")
@@ -162,9 +162,9 @@ subprojects {
         sourceSets {
             main {
                 setRoot "src"
-                kotlin.srcDirs = ["src"]
+                kotlin.srcDirs = ["src", "../android_util/src"]
                 java.srcDirs = ["src"]
-                res.srcDirs = ["res"]
+                res.srcDirs = ["res", "../android_util/res"]
                 manifest.srcFile "AndroidManifest.xml"
 
                 // buildDir = "bin"

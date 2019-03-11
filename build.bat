@@ -17,7 +17,7 @@ cd /D "%PROJ%"
 
 set "ARG_RUN=false"
 set "ARG_RUN_ONLY=false"
-set "PROJECT="
+set "ARG_PROJECT="
 
 :parse_arg
 if not "%~1"=="" (
@@ -29,18 +29,21 @@ if not "%~1"=="" (
         )
     ) else if "%~1"=="" (
         echo. >nul
+    ) else if exist "%~1" (
+        set "ARG_PROJECT=%~1"
     )
+
 
     shift /1
     Goto :parse_arg
 )
 
-if "%PROJECT%"=="" (
-    set "PROJECT=randompicker"
+if "%ARG_PROJECT%"=="" (
+    set "ARG_PROJECT=randompicker"
 )
 :end_parse_arg
 
-set "PROJECT_PACKAGE=com.basicapp.%PROJECT%"
+set "PROJECT_PACKAGE=com.basicapp.%ARG_PROJECT%"
 
 <nul set /p=[94m
 call :sep
@@ -57,7 +60,7 @@ if "%ARG_RUN_ONLY%"=="true" (
 :: set "FILE_ROOT=%~dp0"
 :: cd /D "%FILE_ROOT%"
 :: debug variant is skipped in build.gradle
-set "gradle_cmd=gradle --build-cache -w :%PROJECT%:assembleDebug lint"
+set "gradle_cmd=gradle --build-cache -q :%ARG_PROJECT%:assembleDebug lint"
 :: -Pandroid.optional.compilation=INSTANT_DEV -Pandroid.injected.build.api=28"
 ::  --offline
 ::  --warning-mode none
@@ -96,7 +99,7 @@ echo running with adb
 set "ADB_DEVICE=127.0.0.1:62001"
 cmd /c adb logcat -c
 cmd /c adb -s %ADB_DEVICE% uninstall %PROJECT_PACKAGE%
-cmd /c adb -s %ADB_DEVICE% install -r bin/%PROJECT%-debug.apk
+cmd /c adb -s %ADB_DEVICE% install -r bin/%ARG_PROJECT%-debug.apk
 cmd /c adb -s %ADB_DEVICE% shell am start -n %PROJECT_PACKAGE%/.MainActivity
 call :sep
 echo.
