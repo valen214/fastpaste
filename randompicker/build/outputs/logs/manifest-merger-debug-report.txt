@@ -1,9 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
-INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
-INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
-INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
+ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
+INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
+INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
+INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\User\.gradle\caches\transforms-2\files-2.1\b53b9123de02917422b871e48d5333ea\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\517f2bd6b1d525c6bbf9f62a73a71c56\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\9434ce7b954abf0bf8731c1f66d2bc46\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\363e9d5043407e578eb673d690fc2209\AndroidManifest.xml:17:1-22:12
@@ -30,25 +31,25 @@ MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\User\.gradle\caches
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\User\.gradle\caches\transforms-2\files-2.1\a065a86c14bb0a979a53fd4b16e60ecf\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\User\.gradle\caches\transforms-2\files-2.1\111942ca41e17e921c0adf0acef0e975\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:interpolator:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\3357141b72540cb0a139d919c08791f9\AndroidManifest.xml:17:1-22:12
-INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
-INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
-INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
+INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
+INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
+INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:1-33:12
 	package
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:3:5-40
-		INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
-		INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:3:5-40
+		INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
 	android:versionName
-		INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:6:5-30
-		INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:6:5-30
+		INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
 	android:versionCode
-		INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:5:5-28
-		INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:5:5-28
+		INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:11-69
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:2:11-69
 application
-ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:15:5-32:19
+ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:15:5-32:19
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\852a0ca97cda0a5f811e5d3dd22620c3\AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\852a0ca97cda0a5f811e5d3dd22620c3\AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\253383b9cc56d3064af078d950070d9b\AndroidManifest.xml:22:5-23:19
@@ -56,33 +57,35 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\User\.grad
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\852a0ca97cda0a5f811e5d3dd22620c3\AndroidManifest.xml:22:18-91
 	android:allowBackup
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:16:9-35
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:16:9-35
 	android:theme
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:17:9-65
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:17:9-65
 activity#com.basicapp.randompicker.MainActivity
-ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:18:9-31:20
+ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:18:9-31:20
 	android:screenOrientation
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:21:13-49
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:21:13-49
 	android:exported
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:20:13-36
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:20:13-36
 	android:configChanges
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:22:13-74
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:22:13-74
 	android:name
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:19:13-41
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:19:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:27:13-30:29
+ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:27:13-30:29
 action#android.intent.action.MAIN
-ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:28:17-69
+ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:28:17-69
 	android:name
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:28:25-66
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:28:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:29:17-77
+ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:29:17-77
 	android:name
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:29:27-74
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml:29:27-74
 uses-sdk
-INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
-INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\User\.gradle\caches\transforms-2\files-2.1\b53b9123de02917422b871e48d5333ea\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\User\.gradle\caches\transforms-2\files-2.1\b53b9123de02917422b871e48d5333ea\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\517f2bd6b1d525c6bbf9f62a73a71c56\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\517f2bd6b1d525c6bbf9f62a73a71c56\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\9434ce7b954abf0bf8731c1f66d2bc46\AndroidManifest.xml:20:5-44
@@ -135,13 +138,13 @@ MERGED from [android.arch.core:runtime:1.1.1] C:\Users\User\.gradle\caches\trans
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\User\.gradle\caches\transforms-2\files-2.1\111942ca41e17e921c0adf0acef0e975\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:interpolator:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\3357141b72540cb0a139d919c08791f9\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:interpolator:28.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\3357141b72540cb0a139d919c08791f9\AndroidManifest.xml:20:5-44
-INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
-INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
-		INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
-		ADDED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
-		INJECTED from D:\workspace\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		ADDED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml
+		INJECTED from D:\GoogleDrive\sync\main-custom-project\code\android\app\randompicker\AndroidManifest.xml

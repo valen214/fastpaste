@@ -51,11 +51,14 @@ subprojects {
     apply plugin: "kotlin-android"
     apply plugin: "kotlin-android-extensions"
 
+    ext.project_package = System.env.PROJECT_PACKAGE ?: (
+            "com.android.${project.name}")
+    println("proejct.name: ${project.name}")
+    
+    // println(project.configurations)
+
     android {
         // assert System.getenv("ANDROID_HOME") != null
-
-        println("- project.name: ${project.name}")
-
         /***** /
         variantFilter{ variant ->
             if(variant.buildType.name == "debug"){
@@ -77,11 +80,17 @@ subprojects {
                 println("${key}: ${value}")
             }
         */
+            ext.build_type = variant.buildType.name
             variant.outputs.all{ output ->
-                outputFileName = "../../../../../" +
-                        "bin/${project.name}-${variant.name}.apk"
+                def fileName = "bin/${project.name}-${variant.name}.apk"
+
+                outputFileName = "../../../../../" + fileName
                 // ${variant.versionName}
                 println("outputFileName: ${outputFileName}")
+
+                clean.doLast{
+                    delete "../" + fileName
+                }
                 /*
                 println("variant.outputs: ${output}")
                 if(!output.hasProperty("processManifest")){
@@ -111,12 +120,13 @@ subprojects {
         buildToolsVersion "28.0.3"
 
         defaultConfig {
-            applicationId "com.randommain.${project.name}"
+            applicationId project_package
             applicationIdSuffix ""
             minSdkVersion 18
             targetSdkVersion 28
             versionCode 1
             versionName "1.0"
+            multiDexEnabled true
             testInstrumentationRunner(
             /*
                     "android.support.test.runner.AndroidJUnitRunner")
@@ -125,7 +135,7 @@ subprojects {
             /*****/
             // manifest variables
             manifestPlaceholders = [
-                    full_package: "com.randommain.${project.name}"
+                    full_package: project_package
             ]
         }
 
@@ -180,20 +190,6 @@ subprojects {
         testImplementation 'junit:junit:4.12'
         androidTestImplementation 'com.android.support.test:runner:1.0.2'
     }
-
-    task cleanApk(type: Delete){
-        delete "bin/app.apk"
-    }
-    clean.dependsOn(cleanApk)
-
-    task copyApkToBin(type: Copy){
-        def type = true ? "release" : "debug" // skipped debug variant above
-        from file("${project.name}/build/outputs/apk/${type}/${project.name}.apk")
-        into file("bin/")
-        // rename '(.+)-staging(.+)', '$1$2'
-        rename "app-${type}.apk", "app.apk"
-        println("copied app.apk")
-    }
 }
 
 
@@ -210,7 +206,6 @@ gradle.taskGraph.whenReady { graph ->
 
 task custom_assemble(type: GradleBuild){
     tasks = ['clean', 'assemble', 'lint']
-    println("file:///D:/workspace/main-custom-project/code/android/app/build/reports/lint-results.html#GradleOverrides")
 }
 
 /*
