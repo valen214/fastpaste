@@ -82,11 +82,6 @@ if %errorlevel% neq 0 (
 echo.
 echo.
 call :sep
-echo.
-echo lint report:
-echo file:///D:/workspace/main-custom-project/code/android/app/build/reports/lint-results.html#GradleOverrides
-echo.
-call :sep
 
 if not "%ARG_RUN%"=="true" (
     Goto :end
