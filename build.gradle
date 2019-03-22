@@ -81,15 +81,35 @@ subprojects {
             }
         */
             ext.build_type = variant.buildType.name
-            variant.outputs.all{ output ->
-                def fileName = "bin/${project.name}-${variant.name}.apk"
+            /*
 
-                outputFileName = "../../../../../" + fileName
-                // ${variant.versionName}
+            variant.outputs.all{ output ->
+                def depth = output.outputFile.absolutePath.replace(
+                        rootProject.projectDir.absolutePath,
+                        "").replaceAll("[^\\\\]", "").length() - 1
+                def fileName = "${project.name}-${variant.name}.apk"
+                def outputFileName = "../" * depth + "bin/" + fileName
                 println("outputFileName: ${outputFileName}")
 
+                // ${variant.versionName}
                 clean.doLast{
                     delete fileName
+                }
+            }
+            */
+            variant.outputs.each{ output ->
+                def task = project.tasks.create(
+                        "copyAndRename${variant.name}Apk", Copy)
+                def intoPath = (rootProject.projectDir.absolutePath
+                        .replace("\\", "/") + "/bin")
+
+                task.from(output.outputFile)
+                task.into(intoPath)
+
+                assemble.finalizedBy task
+                project.tasks.findByPath("clean")?.doLast{
+                    followSymlinks = true
+                    project.delete intoPath + "/" + output.outputFile.name
                 }
                 /*
                 println("variant.outputs: ${output}")
@@ -162,9 +182,9 @@ subprojects {
 
         sourceSets {
             main {
-                setRoot "src"
+                // setRoot "src"
                 kotlin.srcDirs = ["src", "../android_util/src"]
-                java.srcDirs = ["src"]
+                // java.srcDirs = ["src"]
                 res.srcDirs = ["res", "../android_util/res"]
                 manifest.srcFile "AndroidManifest.xml"
 
@@ -183,8 +203,15 @@ subprojects {
         */
         
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-        implementation "com.android.support:appcompat-v7:28.0.0"
         implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+        implementation "com.android.support:appcompat-v7:28.0.0"
+        implementation "com.android.support:design:28.0.0"
+        implementation "com.android.support:customtabs:28.0.0"
+        implementation "com.android.support:support-media-compat:28.0.0"
+        implementation "com.android.support:support-v4:28.0.0"
+        implementation "com.google.android.gms:play-services-ads:17.2.0"
+
         testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
         testImplementation (
                 "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
@@ -204,10 +231,6 @@ gradle.taskGraph.whenReady { graph ->
     }
 }
 */
-
-task custom_assemble(type: GradleBuild){
-    tasks = ['clean', 'assemble', 'lint']
-}
 
 /*
 project.gradle.buildFinished{ buildResult ->

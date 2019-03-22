@@ -60,3 +60,8 @@ fun getViewTree(root: ViewGroup): String{
     }
     return output.toString()
 }
+
+fun android.app.Activity.printRootViewTree(): Unit{
+    println(getViewTree(this.getWindow(
+            ).getDecorView().getRootView() as ViewGroup))
+}

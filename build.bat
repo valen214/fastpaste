@@ -41,6 +41,9 @@ if not "%~1"=="" (
 if "%ARG_PROJECT%"=="" (
     set "ARG_PROJECT=randompicker"
 )
+
+:arg_error_check
+
 :end_parse_arg
 
 set "PROJECT_PACKAGE=com.basicapp.%ARG_PROJECT%"
@@ -60,7 +63,7 @@ if "%ARG_RUN_ONLY%"=="true" (
 :: set "FILE_ROOT=%~dp0"
 :: cd /D "%FILE_ROOT%"
 :: debug variant is skipped in build.gradle
-set "gradle_cmd=gradle --build-cache -q :%ARG_PROJECT%:assembleDebug lint"
+set "gradle_cmd=gradle --build-cache -q -p %cd% :%ARG_PROJECT%:assembleDebug :%ARG_PROJECT%:lint"
 :: -Pandroid.optional.compilation=INSTANT_DEV -Pandroid.injected.build.api=28"
 ::  --offline
 ::  --warning-mode none
@@ -98,10 +101,11 @@ cmd /c adb -s %ADB_DEVICE% install -r bin/%ARG_PROJECT%-debug.apk
 cmd /c adb -s %ADB_DEVICE% shell am start -n %PROJECT_PACKAGE%/.MainActivity
 call :sep
 echo.
-echo program output ^> adb logcat MyActivity:D AndroidRuntime:E *:S
+set "logcat_cmd=adb logcat MyActivity:D AndroidRuntime:E Ads:D *:S"
+echo program output ^> %logcat_cmd%
 echo.
 call :sep
-cmd /c adb logcat MyActivity:D AndroidRuntime:E *:S
+cmd /c %logcat_cmd%
 
 :: adb forward tcp:40000 localabstract:com.randommain.fastpaste-inspectorServer
 :: adb forward tcp:40001 localabstract:chrome_devtools_remote

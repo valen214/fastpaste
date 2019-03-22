@@ -1,0 +1,23 @@
+
+
+/*
+
+dependencies {
+    implementation "com.android.support:appcompat-v7:28.0.0"
+}
+android {
+    sourceSets {
+        main {
+            setRoot "src"
+            kotlin.srcDirs = ["src", "../android_util/src"]
+            java.srcDirs = ["src"]
+            res.srcDirs = ["res", "../android_util/res"]
+            manifest.srcFile "AndroidManifest.xml"
+
+            // buildDir = "bin"
+            // systemProperty "sdk.dir" ""
+        }
+    }
+}
+
+*/

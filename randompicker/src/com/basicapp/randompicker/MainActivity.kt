@@ -87,8 +87,7 @@ class MainActivity: AppCompatActivity(){
 
         redirectSystemIOToLog()
 
-        println(getViewTree(
-                getWindow().getDecorView().getRootView() as ViewGroup))
+        printRootViewTree()
         
         // WebView.setWebContentsDebuggingEnabled(true)
 

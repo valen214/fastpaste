@@ -1,4 +1,4 @@
-package com.basicapp.sidenav
+package com.basicapp.default
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

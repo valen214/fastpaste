@@ -29,7 +29,7 @@ android:typeface="Consolas"
     <EditText
         android:id="@+id/activity_main_input1"
         style="@style/activity_main_number_input"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="25dp"
         android:hint="@string/inc1" />
     <Button
         android:id="@+id/activity_main_button1"

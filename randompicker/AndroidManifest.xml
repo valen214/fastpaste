@@ -15,6 +15,9 @@
     <application
         android:allowBackup="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6030416020552943~2934016186" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
